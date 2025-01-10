@@ -1,0 +1,451 @@
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(57deg,rgb(0, 0, 0),rgb(1, 31, 53));
+    color: #000000;
+    line-height: 1.6;
+}
+
+
+.main-container {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.logo-section{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+   
+}
+
+.logo-section h2{
+font-size: 30px;
+}
+
+.logo-section img{
+    width: 140px;
+    height: 80px;
+}
+/* Heading */
+h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+/* Form Elements */
+form p {
+    margin: 15px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 12px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Focus and Hover States */
+input:focus, select:focus, button:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Result Section */
+.result {
+    display: none;
+    margin-top: 15px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.result h2 {
+    margin-bottom: 15px;
+    font-size: 25px;
+    color: #000000;
+    margin-top: -10px;
+}
+
+.count{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 65px;
+    padding-right: 65px;
+}
+
+.count p {
+    margin: 10px 0;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.result .statusshow{
+    padding: 5px;
+    border-left: 2px solid black;
+}
+
+.tips-contain {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+#wrongAnswersInputSection h3{
+    color: white;
+}
+/* Section Header Styling */
+#wrongAnswersInputSection h3.section-title {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Wrong Answer Section */
+#wrongAnswersInputSection {
+    margin-top: 30px;
+    background: #343434;
+    padding: 30px;
+    border-radius: 12px;
+    border:none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Styling for List of Wrong Answers */
+#wrongAnswersInputList {
+    margin-bottom: 20px;
+    
+}
+
+#wrongAnswersInputList input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 2px solid rgb(201, 3, 3);
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#wrongAnswersInputList textarea{
+    width: 100%;
+    height: 130px;
+    padding: 12px;
+    margin: 8px 0;
+    border: 2px solid rgb(201, 3, 3);
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+
+#wrongAnswersInputList textarea::placeholder{
+    font-family:  'Roboto', Arial, sans-serif;
+    font-size: 16px;
+
+}
+
+
+
+
+/* Button for Adding Wrong Answer */
+.add-btn {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    margin: 20px auto 0;
+}
+
+.add-btn:hover {
+    background-color: #ff6f00;
+    transform: translateY(-2px);
+}
+
+/* Wrong Answers List */
+#wrongAnswersList  {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #ffffff;
+    background: linear-gradient(57deg,rgb(0, 0, 0),rgb(14, 0, 68));
+    padding: 10px ;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+#wrongAnswersList {
+    list-style-type: none;
+    padding-left: 20px;  /* Optionally remove left padding */
+}
+
+
+/* Add some basic styling for the download button */
+.download-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.download-btn button {
+    background-color: #008905; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.download-btn button:hover {
+    background-color: #45a049;
+}
+
+.result {
+    margin-top: 20px;
+
+}
+
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    input, select, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+    
+    input, select, button {
+        font-size: 13px;
+        padding: 8px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden;
+}
+
+/* Table Header */
+th {
+    padding: 5px;
+    text-align: left;
+    background-color: #0e0079;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Table Body Cells */
+th, td {
+    padding: 5px;
+    padding-left: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Subtle border between rows */
+}
+
+/* Row Styling */
+tr:nth-child(even) {
+    background-color: #8bf5f2; /* Lighter background for even rows */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Slight hover effect for rows */
+}
+
+/* Text Styling for Grade Range and Status Columns */
+.grade-range, .status {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.grade-range {
+    color: #333;
+}
+
+.status {
+    text-transform: capitalize;
+    color: #333;
+}
+
+/* Table Footer */
+.table-footer {
+    font-size: 14px;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.table-footer a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* Wrapper for Scrolling */
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 10px;
+}
+
+
+
+
+/* Style the entire scrollbar */
+::-webkit-scrollbar {
+    width: 20px; /* Horizontal scrollbar width */
+    height: 12px; /* Vertical scrollbar height */
+}
+
+/* Style the scrollbar track (the area the thumb slides within) */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Light grey background */
+    border-radius: 10px;
+}
+
+/* Style the scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Grey color for the thumb */
+    border-radius: 10px;
+}
+
+/* Style the thumb when it is hovered */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker grey when hovering */
+}
+
+/* Optional: Style for the scrollbar corner (where horizontal and vertical scrollbars meet) */
+::-webkit-scrollbar-corner {
+    background: #f1f1f1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.date-container {   
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#current-date {
+ 
+    color: #010f56;
+}
+
+
+
+
+
+
+
+
+
+

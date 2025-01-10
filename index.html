@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaperGrade</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+</head>
+<body>
+    <div class="main-container">
+        
+        <div class="logo-section" style="text-align: center; margin-bottom: 20px;text-align: left;">
+            <img src="logo.jpeg" alt="PaperGrade Logo" >
+            <h2>Progress Report</h2>
+        </div>
+
+        <form id="gradeForm" onsubmit="return make()">
+            <p>Check your Marks and Grade</p>
+            <select id="examtype" required>
+                <option value="">Select Exam Type</option>
+                <option value="Quick Assessment">Quick Assessment</option>
+                <option value="Knowledge Check">Knowledge Check</option>
+                <option value="Short Quiz">Short Quiz</option>
+                <option value="Weekly Test">Weekly Test</option>
+                <option value="End-of-Month Exam">End-of-Month Exam</option>
+                <option value="Past Paper">Past Paper</option>
+                <option value="Past Paper">Model Paper</option>
+                <option value="Final Exam">Final Exam</option>
+            </select>
+            <input type="text" id="nameinput" placeholder="Enter the Student Name" required>
+            <select id="subjectinput" required>
+                <option value="">Select Subject</option>
+                <option value="Fundamentals of Programming">Fundamentals of Programming</option>
+                <option value="Web Design">Web Design</option>
+                <option value="Computer Systems">Computer Systems</option>
+                <option value="Mathematics & Statistics for IT">Mathematics & Statistics for IT</option>
+                <option value="Communication Skills Development">Communication Skills Development</option>
+                <option value="ICT Skills & Applications">ICT Skills & Applications</option>
+            </select>
+            <input type="text" id="papernameinput" placeholder="Enter the Paper Name" required>
+            <input type="number" id="questionsinput" placeholder="Enter the number of questions" min="1" required>
+            <input type="number" id="answersinput" placeholder="Enter the number of Correct Answers" min="0" required>
+
+           
+            <div id="wrongAnswersInputSection" style="display: none;">
+                <h3>Input Wrong Answers and Explanations</h3>
+                <div id="wrongAnswersInputList">
+                   
+                </div>
+                <button type="button" onclick="addWrongAnswerInput()">Add Wrong Answer</button>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="resultSection" class="result" style="display: none;">
+          
+            <h2>Progress Report</h2>
+            <p style="font-size: 17px;"><strong>Name:</strong> <span id="name" style="font-weight: bold;"></span></p>
+            <p style="font-size: 17px;"><strong>Subject:</strong> <span id="subject" style="font-weight: bold;"></span></p>
+            <div class="date-container">
+                <p>Date: <span id="current-date"></span></p>
+            </div>
+            <hr><br>
+            <h2 id="examtypeoutput" style="text-align: left;"></h2>
+            <h3 style="text-align: center; color: rgb(2, 2, 82); font-size: 22px; margin-bottom: 5px;margin-top: -10px;">Result Sheet</h3>
+            <p style="font-size: 17px;"><strong>Paper Name:</strong> <span id="papername" style="font-weight: bold;"></span></p>
+            <p style="font-size: 17px;"><strong>Number of Questions:</strong> <span id="questions" style="font-weight: bold;"></span></p>
+            <div class="count" >
+                <p><strong>Correct Answers:</strong> <span style="color: rgb(0, 128, 66);" id="correct"></span></p>
+                <p><strong>Wrong Answers:</strong> <span style="color: rgb(213, 1, 1);" id="wrong"></span></p>
+            </div>
+            <p style="font-size: 17px;"><strong>Percentage Marks:</strong> <span id="percentage" style="font-weight: bold;"></span></p>
+            <div id="scoreProgressContainer" style="width: 100%; background-color: #575454; border-radius: 5px; overflow: hidden;">
+                <div id="scoreProgress" style="height: 20px; width: 0%; background-color: #00823b; text-align: center; line-height: 20px; color: white; border-radius: 30px;">0%</div>
+            </div>
+             <!-- Progress Bar -->
+
+            <p style="font-size: 17px;"><strong>Grade:</strong> <span id="grade" style="font-weight: bold;"></span></p>
+            <p style="font-size: 17px;" class="statusshow" id="statusshow"><strong>Status:</strong> <span id="status" style="font-weight: bold;"></span></p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Grade</th>
+                            <th>Percentage Range</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A+</td>
+                            <td class="grade-range">85% and above</td>
+                            <td class="status">Outstanding</td>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td class="grade-range">75% - 84%</td>
+                            <td class="status">Excellent</td>
+                        </tr>
+                        <tr>
+                            <td>A-</td>
+                            <td class="grade-range">70% - 74%</td>
+                            <td class="status">Very Good</td>
+                        </tr>
+                        <tr>
+                            <td>B+</td>
+                            <td class="grade-range">65% - 69%</td>
+                            <td class="status">Good</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td class="grade-range">60% - 64%</td>
+                            <td class="status">Good</td>
+                        </tr>
+                        <tr>
+                            <td>B-</td>
+                            <td class="grade-range">55% - 59%</td>
+                            <td class="status">Satisfactory</td>
+                        </tr>
+                        <tr>
+                            <td>C+</td>
+                            <td class="grade-range">50% - 54%</td>
+                            <td class="status">Fair</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td class="grade-range">45% - 49%</td>
+                            <td class="status">Average</td>
+                        </tr>
+                        <tr>
+                            <td>C-</td>
+                            <td class="grade-range">40% - 44%</td>
+                            <td class="status">Below Average</td>
+                        </tr>
+                        <tr>
+                            <td>D</td>
+                            <td class="grade-range">35% - 39%</td>
+                            <td class="status">Barely Passing</td>
+                        </tr>
+                        <tr>
+                            <td>F</td>
+                            <td class="grade-range">34% and below</td>
+                            <td class="status">Fail</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <br><br>
+            <div id="wrongAnswerSection" style="display: none;">
+                <h3>Wrong Questions and Explanations</h3>
+                <ul id="wrongAnswersList">
+                  
+                </ul>
+            </div>
+
+            
+        </div>
+
+       
+        <div id="downloadBtn" class="download-btn" style="display: none;">
+            <button onclick="downloadPDF()">Download Result as PDF</button>
+        </div>
+        
+
+    <script src="script.js"></script>
+</body>
+</html>
